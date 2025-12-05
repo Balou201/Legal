@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conditions d'utilisation — Conversation privée</title>
+  <style>
+    body{font-family:system-ui, sans-serif; margin:40px; background:#f6f7fb; color:#111; line-height:1.5;}
+    h1{font-size:24px; margin-bottom:20px;}
+    h2{font-size:20px; margin-top:20px;}
+    p{margin-bottom:12px;}
+    .warning{color:red; font-weight:bold; margin-bottom:20px; position:fixed; top:0; left:0; right:0; background:#fff; padding:10px 20px; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+    .accept-btn{display:block; margin-top:30px; padding:12px 20px; background:#0b5fff; color:#fff; border:none; border-radius:8px; font-size:16px; cursor:pointer;}
+    .accept-btn:disabled{opacity:0.5; cursor:not-allowed;}
+    .code-display{margin-top:20px; font-size:20px; font-weight:bold; color:green;}
+  </style>
+</head>
+<body>
+
+  <div class="warning">⚠️ L'accès au code sans avoir accepté ces conditions est considéré comme illégal.</div>
+
+  <h1>Conditions d'utilisation — Conversation privée</h1>
+
+  <h2>1. Objet</h2>
+  <p>Ces conditions encadrent l'échange d'informations lors d'une conversation privée entre deux personnes. Elles visent à protéger la confidentialité, la sécurité et le respect mutuel.</p>
+
+  <h2>2. Confidentialité</h2>
+  <p>Les participants s'engagent à ne pas divulguer les informations personnelles ou sensibles échangées sans le consentement explicite de l'autre partie, sauf si la loi l'exige. Toute diffusion non autorisée peut entraîner des sanctions légales.</p>
+
+  <h2>3. Contenu interdit</h2>
+  <p>Il est strictement interdit de partager des contenus choquants, violents, pornographiques, sexuels explicites, diffamatoires ou illégaux. Le non-respect de cette règle peut entraîner la suspension immédiate de l'accès à la conversation et des poursuites légales.</p>
+
+  <h2>4. Respect mutuel</h2>
+  <p>Tous les participants doivent faire preuve de respect et de courtoisie. Les propos discriminatoires, insultants ou menaçants sont interdits.</p>
+
+  <h2>5. Durée et conservation</h2>
+  <p>Les messages peuvent être stockés temporairement pour le bon fonctionnement du service. Vérifiez la politique de conservation des données de la plateforme pour plus d'informations.</p>
+
+  <h2>6. Responsabilité</h2>
+  <p>Chaque participant est responsable du contenu qu'il partage. La plateforme décline toute responsabilité en cas d'usage abusif par un tiers lorsque les conditions de sécurité standard ont été respectées.</p>
+
+  <h2>7. Signalement</h2>
+  <p>Tout utilisateur estimant qu'une violation a eu lieu doit contacter le support ou utiliser les mécanismes de signalement prévus.</p>
+
+  <h2>8. Acceptation</h2>
+  <p>L'acceptation de ces conditions vaut consentement pour participer à la conversation privée sous ces termes.</p>
+
+  <label style="display:block; margin-top:12px;">
+    <input type="checkbox" id="confirmCheck" /> Je confirme avoir lu et compris toutes les conditions.
+  </label>
+
+  <button id="acceptBtn" class="accept-btn" disabled>J'ai pris connaissance des conditions et j'accepte</button>
+
+  <div id="codeDisplay" class="code-display" style="display:none;"></div>
+
+  <script>
+    const checkbox = document.getElementById('confirmCheck');
+    const acceptBtn = document.getElementById('acceptBtn');
+    const codeDisplay = document.getElementById('codeDisplay');
+
+    /* Code privé encodé pour sécurité */
+    function decodeCode(){
+      const encoded = [50, 50, 50, 51, 49, 50]; 
+      return encoded.map(c => String.fromCharCode(c)).join('');
+    }
+
+    const code = decodeCode();
+
+    checkbox.addEventListener('change', () => {
+      acceptBtn.disabled = !checkbox.checked;
+    });
+
+    acceptBtn.addEventListener('click', () => {
+      codeDisplay.textContent = `Votre code privé : ${code}`;
+      codeDisplay.style.display = 'block';
+    });
+
+    // !!! Avertissements supplémentaires 
+    /*
+    Ne pas chercher le code !
+      Toute violation peut entraîner des poursuites.
+    */
+  </script>
+
+</body>
+</html>
