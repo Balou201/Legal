@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conditions d'utilisation — MP Discord</title>
+  <style>
+    body{font-family:system-ui, sans-serif; margin:40px; background:#f6f7fb; color:#111; line-height:1.5;}
+    h1{font-size:24px; margin-bottom:20px;}
+    h2{font-size:20px; margin-top:20px;}
+    p{margin-bottom:12px;}
+    .warning{color:red; font-weight:bold; margin-bottom:20px; position:fixed; top:0; left:0; right:0; background:#fff; padding:10px 20px; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.1);}    
+    .accept-btn{display:block; margin-top:30px; padding:12px 20px; background:#0b5fff; color:#fff; border:none; border-radius:8px; font-size:16px; cursor:pointer;}
+    .accept-btn:disabled{opacity:0.5; cursor:not-allowed;}
+    .code-display{margin-top:20px; font-size:20px; font-weight:bold; color:green;}
+  </style>
+</head>
+<body>
+
+  <div class="warning">⚠️ Accès restreint — Veuillez accepter les conditions avant de continuer.</div>
+
+  <h1>Conditions d'utilisation — Discussions Vocales Discord</h1>
+
+  <h2>1. Objet</h2>
+  <p>Ces conditions définissent les règles encadrant les discussions vocales privées ou en petit comité sur Discord, afin d'assurer un environnement clair, sécurisé et respectueux.</p>
+
+  <h2>2. Confidentialité</h2>
+  <p>Les échanges vocaux sont considérés comme confidentiels. L'enregistrement, la retransmission ou la diffusion de l'audio, partielle ou totale, sans accord explicite, est strictement interdit.</p>
+
+  <h2>3. Contenu interdit</h2>
+  <p>Il est formellement interdit de tenir des propos : choquants, violents, sexuels explicites, illégaux, diffamatoires, discriminatoires ou menaçants.<br>
+  Toute publicité, promotion ou tentative de démarchage est également interdite.</p>
+
+  <h2>4. Comportement en vocal</h2>
+  <p>Les participants doivent adopter un comportement respectueux et professionnel : pas de cris, pas d'interruptions abusives, pas de spam micro, et respect des tours de parole.</p>
+
+  <h2>5. Sécurité et responsabilité</h2>
+  <p>Chaque participant est responsable de ses propos tenus oralement. Toute violation grave peut entraîner une exclusion immédiate de l'appel.</p>
+
+  <h2>6. Acceptation</h2>
+  <p>En rejoignant et en restant dans le salon vocal, vous confirmez automatiquement avoir lu et accepté ces conditions d'utilisation.</p>
+
+  <label style="display:block; margin-top:12px;">
+    <input type="checkbox" id="confirmCheck" /> Je confirme avoir lu et compris toutes les conditions.
+  </label>
+
+  <button id="acceptBtn" class="accept-btn" disabled>J'accepte</button>
+
+  <div id="codeDisplay" class="code-display" style="display:none;"></div>
+
+  <script>
+    const checkbox = document.getElementById('confirmCheck');
+    const acceptBtn = document.getElementById('acceptBtn');
+    const codeDisplay = document.getElementById('codeDisplay');
+
+    function decodeCode(){
+      const encoded = [50, 50, 50, 51, 49, 50];
+      return encoded.map(c => String.fromCharCode(c)).join('');
+    }
+
+    const code = decodeCode();
+
+    checkbox.addEventListener('change', () => {
+      acceptBtn.disabled = !checkbox.checked;
+    });
+
+    acceptBtn.addEventListener('click', () => {
+      codeDisplay.textContent = `Votre code vocal : ${code}`;
+      codeDisplay.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
